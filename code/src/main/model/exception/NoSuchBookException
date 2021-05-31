@@ -1,0 +1,6 @@
+package model.exception;
+
+// Represent an Exception Object thrown where book specified is not found on reading list
+public class NoSuchBookException extends Exception {
+    public NoSuchBookException() {}
+}
