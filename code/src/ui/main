@@ -1,9 +1,0 @@
-package ui;
-
-public class Main {
-
-    // EFFECTS: start a new application
-    public static void main(String[] args) {
-        new Application();
-    }
-}
