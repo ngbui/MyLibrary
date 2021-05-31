@@ -1,0 +1,40 @@
+package model;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class BookTest {
+    private Book testBook;
+
+    @BeforeEach
+    void runBefore() {
+        testBook = new Book("The Hobbit", "J. R. R. Tolkien");
+    }
+
+    @Test
+    void testConstructor() {
+        assertEquals("The Hobbit", testBook.getTitle());
+        assertEquals("J. R. R. Tolkien", testBook.getAuthor());
+        assertEquals(BookStatus.FALSE, testBook.getReadStatus());
+    }
+
+    @Test
+    void testMarkAsRead() {
+        testBook.markAsRead();
+        assertEquals(testBook.getReadStatus(),BookStatus.TRUE);
+    }
+
+    @Test
+    void testMarkAsReadMultipleTimes() {
+        testBook.markAsRead();
+        assertEquals(testBook.getReadStatus(),BookStatus.TRUE);
+
+        // mark bookexample as read a second time
+        for (int i = 0; i < 3; i++) {
+            testBook.markAsRead();
+        }
+        assertEquals(testBook.getReadStatus(),BookStatus.TRUE);
+    }
+}
