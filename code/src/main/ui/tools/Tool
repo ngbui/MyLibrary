@@ -1,0 +1,48 @@
+package ui.tools;
+
+import ui.ReadingListGUI;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.*;
+import java.io.File;
+
+// Represent A Tool with which a user can interact with the ReadingListGUI
+public abstract class Tool {
+    protected JButton button;
+    protected ReadingListGUI gui;
+
+    // construct tool with this.gui = gui, create button for tool and add the button to parent
+    public Tool(ReadingListGUI gui, JComponent parent) {
+        this.gui = gui;
+        createButton(parent);
+        addToParent(parent);
+        addListener();
+    }
+
+    // getters
+    // EFFECTS: creates button to activate tool
+    protected abstract void createButton(JComponent parent);
+
+    // EFFECTS: adds a listener for this tool
+    protected abstract void addListener();
+
+    // MODIFIES: parent
+    // EFFECTS:  adds the given button to the parent component
+    public void addToParent(JComponent parent) {
+        parent.add(button);
+    }
+
+    // EFFECTS: play the sound with file path specified in soundName
+    public void playSound(String soundName) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName));
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (Exception e) {
+            System.out.println("Error with playing sound.");
+        }
+    }
+}
