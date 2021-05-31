@@ -1,0 +1,15 @@
+{
+          "books": [
+                    {
+                              "author": "J. R. R. Tolkien",
+                              "title": "The Hobbit",
+                              "status": "FALSE"
+                    },
+                    {
+                              "author": "Patrick Rothfuss",
+                              "title": "The Name of the Wind",
+                              "status": "TRUE"
+                    }
+          ],
+          "name": "My reading list"
+}
